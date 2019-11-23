@@ -25,9 +25,10 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         buttonStart1.setOnClickListener {
             if (editTime1.text.trim().isNotEmpty()) {
+                val getTime: Int = editTime1.text.toString().toInt()
                 val calendar: Calendar = Calendar.getInstance()
                 calendar.timeInMillis = System.currentTimeMillis()
-                calendar.add(Calendar.MINUTE, 2)
+                calendar.add(Calendar.MINUTE, getTime)
 
                 val alarmIntent = Intent(this, AlarmReceiver::class.java)
                 val pendingIntent = PendingIntent.getBroadcast(
