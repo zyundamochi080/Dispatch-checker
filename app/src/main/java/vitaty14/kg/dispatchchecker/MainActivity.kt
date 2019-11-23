@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import com.deploygate.sdk.DeployGate
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,15 +23,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
         buttonStart1.setOnClickListener {
-            val alertTime = System.currentTimeMillis() + 10000
-            val alarmIntent = Intent(this,AlarmReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(this,0,alarmIntent,PendingIntent.FLAG_UPDATE_CURRENT)
+            if (editTime1.text.trim().isNotEmpty()) {
+                val calendar: Calendar = Calendar.getInstance()
+                calendar.timeInMillis = System.currentTimeMillis()
+                calendar.add(Calendar.MINUTE, 2)
 
-            val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP , alertTime ,pendingIntent)
-            Toast.makeText(this,"SET",Toast.LENGTH_SHORT).show()
+                val alarmIntent = Intent(this, AlarmReceiver::class.java)
+                val pendingIntent = PendingIntent.getBroadcast(
+                    this,
+                    0,
+                    alarmIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT
+                )
+
+                val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                manager.setAlarmClock(AlarmManager.AlarmClockInfo(calendar.timeInMillis, null), pendingIntent)
+                Toast.makeText(this, "SET", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this,"not found",Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
