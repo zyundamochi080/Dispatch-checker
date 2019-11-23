@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Dispatch-checker</string>
+    <string name="BtnStart">Start</string>
+    <string name="BtnStop">Stop</string>
+    <string name="BtnCancel">Cancel</string>
 </resources>
