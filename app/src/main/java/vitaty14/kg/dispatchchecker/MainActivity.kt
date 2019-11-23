@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             val pendingIntent = PendingIntent.getBroadcast(this,0,alarmIntent,PendingIntent.FLAG_UPDATE_CURRENT)
 
             val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            manager.setExact(AlarmManager.RTC_WAKEUP , alertTime ,pendingIntent)
+            manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP , alertTime ,pendingIntent)
             Toast.makeText(this,"SET",Toast.LENGTH_SHORT).show()
         }
     }
