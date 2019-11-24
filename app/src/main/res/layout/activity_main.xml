@@ -9,8 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Layout1"
-        android:layout_width="396dp"
-        android:layout_height="97dp"
+        android:layout_width="394dp"
+        android:layout_height="143dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,66 +18,67 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ViewDispatch1"
+            app:layout_constraintBottom_toTopOf="@+id/editTime1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/editTime1"
             android:layout_width="277dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:hint="時間(分)"
-            android:inputType="number"
             android:digits="0123456789"
+            android:hint="@string/HintTime"
+            android:inputType="number"
             android:maxLength="4"
             android:maxLines="1"
+            app:layout_constraintBottom_toTopOf="@+id/buttonStart1"
             app:layout_constraintEnd_toStartOf="@+id/TimeView1"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
         <TextView
             android:id="@+id/TimeView1"
             android:layout_width="39dp"
             android:layout_height="40dp"
-            android:text="\n分"
+            android:text="@string/ViewTime"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/buttonDelete1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/editTime1"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.787" />
 
         <Button
             android:id="@+id/buttonStart1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:text="@string/BtnStart"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonStop1"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTime1" />
-
-        <Button
-            android:id="@+id/buttonStop1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/BtnStop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonDelete1"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/buttonStart1"
-            app:layout_constraintTop_toBottomOf="@+id/editTime1" />
+            app:layout_constraintTop_toBottomOf="@+id/editTime1"
+            app:layout_constraintVertical_bias="0.555" />
 
         <Button
             android:id="@+id/buttonDelete1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
             android:text="@string/BtnCancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/buttonStop1"
-            app:layout_constraintTop_toBottomOf="@+id/editTime1" />
+            app:layout_constraintTop_toBottomOf="@+id/editTime1"
+            app:layout_constraintVertical_bias="0.555" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
