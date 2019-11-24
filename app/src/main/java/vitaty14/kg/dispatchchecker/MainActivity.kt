@@ -1,9 +1,6 @@
 package vitaty14.kg.dispatchchecker
 
-import android.app.AlarmManager
-import android.app.Notification
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.app.*
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -32,6 +29,7 @@ class MainActivity : AppCompatActivity() {
                 calendar.add(Calendar.MINUTE, getTime)
 
                 val alarmIntent = Intent(this, AlarmReceiver::class.java)
+                alarmIntent.putExtra("requestCode",10001)
                 val pendingIntent = PendingIntent.getBroadcast(
                     this,
                     10001,
@@ -46,18 +44,37 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"not found",Toast.LENGTH_SHORT).show()
             }
         }
+        buttonDelete1.setOnClickListener {
+            AlertDialog.Builder(this).apply {
+                setTitle("Alarm Cancel")
+                setMessage("Do you cancel?")
+                setPositiveButton("OK") { _, _ ->
+                    val alarmIntent = Intent(this@MainActivity, AlarmReceiver::class.java)
+                    val pendingIntent = PendingIntent.getBroadcast(
+                        this@MainActivity,
+                        10001,
+                        alarmIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                    )
+
+                    val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                    pendingIntent.cancel()
+                    manager.cancel(pendingIntent)
+                }
+                setNegativeButton("Cancel", null)
+                show()
+            }
+        }
     }
 }
 
 class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        Toast.makeText(context,"hoge",Toast.LENGTH_LONG).show()
-        DeployGate.logDebug("onReceive")
-
+        val requestCode:Int = intent.getIntExtra("requestCode",0)
         val notifyIntent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, notifyIntent, 0)
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(context, requestCode, notifyIntent, 0)
 
         val notification= NotificationCompat.Builder(context)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
