@@ -1,6 +1,7 @@
 package vitaty14.kg.dispatchchecker
 
 import android.app.AlarmManager
+import android.app.Notification
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
@@ -33,14 +34,14 @@ class MainActivity : AppCompatActivity() {
                 val alarmIntent = Intent(this, AlarmReceiver::class.java)
                 val pendingIntent = PendingIntent.getBroadcast(
                     this,
-                    0,
+                    10001,
                     alarmIntent,
                     PendingIntent.FLAG_UPDATE_CURRENT
                 )
 
                 val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 manager.setAlarmClock(AlarmManager.AlarmClockInfo(calendar.timeInMillis, null), pendingIntent)
-                Toast.makeText(this, "SET", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "SET:${editTime1.text.trim()}分", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this,"not found",Toast.LENGTH_SHORT).show()
             }
@@ -61,10 +62,11 @@ class AlarmReceiver : BroadcastReceiver() {
         val notification= NotificationCompat.Builder(context)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setAutoCancel(true)
-            .setContentTitle("Test")
-            .setContentText("content text")
+            .setContentTitle("派遣終了")
+            .setContentText("指定時間が経過しました")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
+            .setDefaults(Notification.DEFAULT_ALL)
             .build()
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         manager.notify(1, notification)

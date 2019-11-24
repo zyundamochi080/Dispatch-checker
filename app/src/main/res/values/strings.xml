@@ -3,4 +3,7 @@
     <string name="BtnStart">Start</string>
     <string name="BtnStop">Stop</string>
     <string name="BtnCancel">Cancel</string>
+    <string name="HintTime">時間(分)</string>
+    <string name="ViewTime">\n分</string>
+    <string name="ViewDispatch1">派遣①</string>
 </resources>
