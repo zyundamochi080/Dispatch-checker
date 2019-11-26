@@ -5,19 +5,38 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    val CHANNEL_ID = "dispatch_channel"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val manager : NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+            val channel =  NotificationChannel (
+                CHANNEL_ID,
+                "派遣終了",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+
+            channel.enableLights(true)
+            channel.lightColor = Color.WHITE
+            channel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+
+            manager.createNotificationChannel(channel)
+        }
     }
 
     override fun onResume() {
@@ -225,17 +244,21 @@ class AlarmReceiver : BroadcastReceiver() {
         }
         val pendingIntent: PendingIntent = PendingIntent.getActivity(context, requestCode, notifyIntent, 0)
 
-        val notification= NotificationCompat.Builder(context)
+        val notification : Notification.Builder? = Notification.Builder(context)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setAutoCancel(true)
             .setContentTitle("派遣終了")
             .setContentText("指定時間が経過しました")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setPriority(Notification.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setDefaults(Notification.DEFAULT_ALL)
-            .build()
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    notification?.setChannelId("dispatch_channel")
+                }
+        
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        manager.notify(1, notification)
+        manager.notify(1, notification?.build())
 
         when(requestCode) {
             10001 -> {
