@@ -6,4 +6,6 @@
     <string name="HintTime">時間(分)</string>
     <string name="ViewTime">\n分</string>
     <string name="ViewDispatch1">派遣①</string>
+    <string name="ViewDispatch2">派遣②</string>
+    <string name="ViewDispatch3">派遣③</string>
 </resources>

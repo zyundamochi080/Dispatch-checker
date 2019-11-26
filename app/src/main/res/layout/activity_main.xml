@@ -14,9 +14,10 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.154">
 
         <TextView
             android:id="@+id/textView1"
@@ -78,6 +79,157 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTime1"
+            app:layout_constraintVertical_bias="0.555" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Layout2"
+        android:layout_width="394dp"
+        android:layout_height="143dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/Layout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Layout1">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ViewDispatch2"
+            app:layout_constraintBottom_toTopOf="@+id/editTime2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTime2"
+            android:layout_width="277dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:digits="0123456789"
+            android:hint="@string/HintTime"
+            android:inputType="number"
+            android:maxLength="4"
+            android:maxLines="1"
+            app:layout_constraintBottom_toTopOf="@+id/buttonStart2"
+            app:layout_constraintEnd_toStartOf="@+id/TimeView2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/TimeView2"
+            android:layout_width="39dp"
+            android:layout_height="40dp"
+            android:text="@string/ViewTime"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/buttonDelete2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/editTime2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.787" />
+
+        <Button
+            android:id="@+id/buttonStart2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/BtnStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTime2"
+            app:layout_constraintVertical_bias="0.555" />
+
+        <Button
+            android:id="@+id/buttonDelete2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="@string/BtnCancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTime2"
+            app:layout_constraintVertical_bias="0.555" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Layout3"
+        android:layout_width="394dp"
+        android:layout_height="143dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.928">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ViewDispatch3"
+            app:layout_constraintBottom_toTopOf="@+id/editTime3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTime3"
+            android:layout_width="277dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:digits="0123456789"
+            android:hint="@string/HintTime"
+            android:inputType="number"
+            android:maxLength="4"
+            android:maxLines="1"
+            app:layout_constraintBottom_toTopOf="@+id/buttonStart3"
+            app:layout_constraintEnd_toStartOf="@+id/TimeView3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/TimeView3"
+            android:layout_width="39dp"
+            android:layout_height="40dp"
+            android:text="@string/ViewTime"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/buttonDelete3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/editTime3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.787" />
+
+        <Button
+            android:id="@+id/buttonStart3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/BtnStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTime3"
+            app:layout_constraintVertical_bias="0.555" />
+
+        <Button
+            android:id="@+id/buttonDelete3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="@string/BtnCancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTime3"
             app:layout_constraintVertical_bias="0.555" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
